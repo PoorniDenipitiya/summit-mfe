@@ -1,0 +1,20 @@
+{
+  "name": "summit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:auth": "cd sysco-ecommerce-auth-mfe && npm run start",
+    "start:categories": "cd sysco-ecommerce-categories-mfe && npm run start",
+    "start:home": "cd sysco-ecommerce-home-mfe && npm run start",
+    "start:navbar": "cd sysco-ecommerce-navbar-mfe && npm run start",
+    "start:root": "cd sysco-ecommerce-root-mfe && npm run start",
+    "start:all": "concurrently \"npm run start:root\" \"npm run start:auth\" \"npm run start:navbar\" \"npm run start:home\" \"npm run start:categories\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  }
+}
