@@ -52,8 +52,8 @@ project-root/
 Open your terminal, navigate to the directory where you want the project, and run:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/summitcommunity/summit-mfe-base-template
+cd summit-mfe-base-templatey
 
 ```
 
