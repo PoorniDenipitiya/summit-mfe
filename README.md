@@ -53,7 +53,7 @@ Open your terminal, navigate to the directory where you want the project, and ru
 
 ```bash
 git clone https://github.com/summitcommunity/summit-mfe-base-template
-cd summit-mfe-base-templatey
+cd summit-mfe-base-template
 
 ```
 
