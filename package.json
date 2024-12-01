@@ -7,14 +7,25 @@
     "start:categories": "cd sysco-ecommerce-categories-mfe && npm run start",
     "start:home": "cd sysco-ecommerce-home-mfe && npm run start",
     "start:navbar": "cd sysco-ecommerce-navbar-mfe && npm run start",
+    "start:bakery": "cd sysco-ecommerce-bakery-mfe && npm run start",
+    "start:cart": "cd sysco-ecommerce-cart-mfe && npm run start",
+    "start:contact": "cd sysco-ecommerce-contact-mfe && npm run start",
+    "start:admin": "cd sysco-ecommerce-admin-mfe && npm run start",
+    "start:footer": "cd sysco-ecommerce-footer-mfe && npm run start",
     "start:root": "cd sysco-ecommerce-root-mfe && npm run start",
-    "start:all": "concurrently \"npm run start:root\" \"npm run start:auth\" \"npm run start:navbar\" \"npm run start:home\" \"npm run start:categories\""
+    "start:all": "concurrently \"npm run start:root\" \"npm run start:auth\" \"npm run start:navbar\" \"npm run start:home\" \"npm run start:categories\" \"npm run start:bakery\" \"npm run start:contact\" \"npm run start:admin\" \"npm run start:footer\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "concurrently": "8.2.2"
+    "concurrently": "^8.2.2",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "dependencies": {
+    "@aws-amplify/auth": "^6.6.2",
+    "axios": "^1.7.8",
+    "summit": "file:"
   }
 }

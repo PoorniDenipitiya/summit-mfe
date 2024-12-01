@@ -1,52 +1,130 @@
-import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Authenticator } from '@aws-amplify/ui-react';
+import { getCurrentUser } from '@aws-amplify/auth';
+import axios from 'axios';
+import '@aws-amplify/ui-react/styles.css';
+import { useNavigate } from "react-router-dom";
 
 const LoginScreen = () => {
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-
-    // Simulate an API call to authenticate
-    if (username === "user" && password === "pass") {
-      const token = "sample-token"; // Replace with the actual token from API response
-      localStorage.setItem("authToken", token);
-      navigate("/"); // Store token in local storage
-    } else {
-      setError("Invalid username or password");
+  const saveUserToBFF = async (user) => {
+    try {
+      const currentSession = await getCurrentUser();
+      const token = (await currentSession.getSignInUserSession()).getIdToken().getJwtToken();
+      
+      await axios.post('http://localhost:3001/api/users', {
+        email: user.attributes.email,
+        name: user.attributes.name
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      console.log('User data sent to BFF');
+    } catch (error) {
+      console.error('Error sending user data to BFF:', error);
     }
   };
 
+  useEffect(() => {
+    if (user) {
+      saveUserToBFF(user);
+      navigate("/home"); 
+    }
+  }, [user]);
+
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <Authenticator>
+      {({ signOut, user: authUser }) => {
+        if (authUser && !user) {
+          setUser(authUser);
+        }
+        
+      return (
+          <div className="auth-container">
+            <h2>Welcome {user?.attributes?.email}</h2>
+            <button onClick={signOut}>Sign Out</button>
+          </div>
+        );
+      }}
+    </Authenticator>
   );
 };
 
 export default LoginScreen;
+
+
+
+/*
+with session but not working
+import React, { useState, useEffect } from "react";
+import { Authenticator } from "@aws-amplify/ui-react";
+import axios from "axios";
+import "@aws-amplify/ui-react/styles.css";
+import eventBus from './shared-events';
+
+const LoginScreen = () => {
+  const [user, setUser] = useState(null);
+
+  const saveUserToBFF = async (user) => {
+    try {
+      const currentSession = await Auth.currentSession();
+      const token = currentSession.getIdToken().getJwtToken();
+
+      localStorage.setItem("token", token);
+
+      await axios.post(
+        "http://localhost:3001/api/users",
+        {
+          email: user.attributes.email,
+          name: user.attributes.name,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("User data sent to BFF");
+    } catch (error) {
+      console.error("Error sending user data to BFF:", error.response?.data || error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      saveUserToBFF(user);
+    }
+  }, [user]);
+
+  return (
+    <Authenticator>
+      {({ signOut, user: authUser }) => {
+        if (authUser && !user) {
+          setUser(authUser);
+          eventBus.emit('userLoggedIn', authUser);
+        }
+
+        return (
+          <div className="auth-container">
+            <h2>Welcome {authUser?.attributes?.email}</h2>
+            <button
+              onClick={() => {
+                localStorage.removeItem("token");
+                eventBus.emit('userLoggedOut');
+                signOut();
+              }}
+            >
+              Sign Out
+            </button>
+          </div>
+        );
+      }}
+    </Authenticator>
+  );
+};
+
+export default LoginScreen;
+*/

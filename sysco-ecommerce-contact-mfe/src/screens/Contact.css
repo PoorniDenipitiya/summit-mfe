@@ -1,0 +1,38 @@
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-container p {
+  margin-bottom: 24px;
+  color: #666;
+}
+
+.contact-form {
+  margin-top: 16px;
+}
+
+.contact-form .ant-input,
+.contact-form .ant-input-textarea {
+  height: 40px;
+  font-size: 14px;
+}
+
+.contact-form .ant-btn {
+  font-size: 16px;
+  height: 40px;
+}

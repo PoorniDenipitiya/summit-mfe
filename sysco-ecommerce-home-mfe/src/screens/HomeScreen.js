@@ -1,4 +1,4 @@
-import Product from "../components/Product";
+/*import Product from "../components/Product";
 
 const HomeScreen = () => {
   // Sample product data
@@ -27,3 +27,4 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+*/

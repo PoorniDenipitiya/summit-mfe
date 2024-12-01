@@ -1,0 +1,137 @@
+.bakery-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .bakery-page h2 {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .bakery-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .bakery-card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .bakery-card .ant-card-cover {
+    overflow: hidden;
+  }
+  
+  .bakery-card .ant-card-cover img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .bakery-card:hover .ant-card-cover img {
+    transform: scale(1.05);
+  }
+  
+  .bakery-card .ant-card-meta-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .bakery-card .price {
+    font-size: 14px;
+    color: #ff4d4f;
+    font-weight: bold;
+  }
+  
+  .bakery-card .ant-card-actions {
+    border-top: none;
+  }
+  
+  .bakery-card .ant-card-actions li {
+    margin: 0;
+  }
+  
+  .bakery-card .ant-card-actions button {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .quick-view-content {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .quick-view-image {
+    flex: 1;
+  }
+  
+  .quick-view-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .quick-view-details {
+    flex: 1;
+  }
+  
+  .quick-view-details h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .quick-view-details h3 {
+    font-size: 20px;
+    color: #ff4d4f;
+    margin-bottom: 15px;
+  }
+  
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .quantity-selector span {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .quick-view-details button {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .availability {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .quick-view-content {
+      flex-direction: column;
+    }
+  }

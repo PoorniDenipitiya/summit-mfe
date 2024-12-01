@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
         </li>
         <li style={{ marginLeft: "auto" }}>
           {" "}
-          {/* Pushes the logout button to the right */}
+         // Pushes the logout button to the right 
           <button onClick={handleLogout} style={{ cursor: "pointer" }}>
             Logout
           </button>
@@ -35,3 +35,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+*/

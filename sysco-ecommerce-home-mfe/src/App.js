@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+/*import { Route, Routes } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import ProductDetail from "./components/ProductDetail";
 import AuthRoute from "./AuthRoute";
@@ -26,6 +26,27 @@ const App = () => {
         />
       </Routes>
     </>
+  );
+};
+
+export default App;
+*/
+
+
+import React from "react";
+//import Home from './screens/Home';
+import Carouselcomp from './screens/CarouselComponent';
+//import "antd/dist/reset.css";
+
+const App = () => {
+  return (
+    <div>
+     
+      {/* <h1>Categories</h1> */}
+      <Carouselcomp />
+      
+      
+    </div>
   );
 };
 
